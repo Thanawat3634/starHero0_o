@@ -61,7 +61,7 @@
  
   <button class="ar-button" onclick="triggerAR('model1')">
 
-    Play AR
+    Play KamenRider
 </button>
 </section>
 
@@ -82,6 +82,56 @@
     src="Toji Worm.glb"
 
     ios-src="Toji Worm.usdz"
+
+    ar
+
+    ar-modes="scene-viewer webxr quick-look"
+
+    ar-placement="floor"
+
+    camera-controls
+
+    auto-rotate
+
+    autoplay
+
+    shadow-intensity="1"
+
+    shadow-softness="1"
+
+    environment-image="neutral"
+
+    loading="eager"
+
+    reveal="auto"
+
+    style="width: 100%; height: 400px;"
+>
+</model-viewer>
+ 
+  <button class="ar-button" onclick="triggerAR('model1')">
+
+    Play Toji Worm
+</button>
+</section>
+
+ <header>
+<div class="main-title">StarHero0_o</div>
+<div class="sub-title">AR Experience</div>
+</header>
+ 
+<!-- AR Section -->
+<section class="ar-section">
+<div class="head-title">Mingpu</div>
+<div class="sub-title">AR</div>
+ 
+  <model-viewer
+
+    id="model1"
+
+    src="AR.glb"
+
+    ios-src="AR.usdz"
 
     ar
 

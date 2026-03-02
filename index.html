@@ -1,120 +1,125 @@
 <!DOCTYPE html>
 <html lang="th">
 <head>
-  <meta charset="UTF-8" />
-  <title>Thanawat AR</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
+<meta charset="UTF-8" />
+<title>eendhero AR</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="description" content="Mingpu - AR Concept design from Thai grilled pork (หมูปิ้ง)" />
+ 
   <!-- Google Font -->
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Thai&display=swap" rel="stylesheet" />
-
-  <style>
-    body {
-      margin: 0;
-      font-family: 'Noto Sans Thai', sans-serif;
-      background: #f5f5f5;
-      text-align: center;
-    }
-
-    header {
-      padding: 30px 20px;
-      background: #111;
-      color: white;
-    }
-
-    .main-title {
-      font-size: 32px;
-      font-weight: bold;
-    }
-
-    .sub-title {
-      font-size: 16px;
-      opacity: 0.8;
-    }
-
-    .ar-section {
-      padding: 40px 20px;
-      max-width: 900px;
-      margin: auto;
-    }
-
-    .head-title {
-      font-size: 24px;
-      font-weight: bold;
-      margin-bottom: 10px;
-    }
-
-    model-viewer {
-      width: 100%;
-      height: 420px;
-      background: white;
-      border-radius: 16px;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-    }
-
-    footer {
-      margin-top: 50px;
-      padding: 30px;
-      background: #111;
-      color: white;
-      font-size: 14px;
-    }
-
-    footer a {
-      color: #ccc;
-      text-decoration: none;
-    }
-
-    footer a:hover {
-      color: white;
-    }
-  </style>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Thai&display=swap" rel="stylesheet" />
+ 
+  <!-- CSS -->
+<link rel="stylesheet" href="style.css" />
 </head>
-
+ 
 <body>
-
+ 
 <header>
-  <div class="main-title">Thanawat</div>
-  <div class="sub-title">AR Experience</div>
+<div class="main-title">eendhero</div>
+<div class="sub-title">AR Experience</div>
 </header>
-
-<div class="ar-section">
-  <div class="head-title">Mingpu</div>
-  <div class="sub-title">Concept design from Thai grilled pork (หมูปิ้ง)</div>
-
+ 
+<!-- AR Section -->
+<section class="ar-section">
+<div class="head-title">Mingpu</div>
+<div class="sub-title">Concept design from Thai grilled pork (หมูปิ้ง)</div>
+ 
   <model-viewer
+
     id="model1"
+
     src="AR.glb"
+
     ios-src="AR.usdz"
+
     ar
+
     ar-modes="scene-viewer webxr quick-look"
-    ar-button
+
+    ar-placement="floor"
+
     camera-controls
+
     auto-rotate
+
+    autoplay
+
     shadow-intensity="1"
+
+    shadow-softness="1"
+
     environment-image="neutral"
+
     loading="eager"
-    reveal="auto">
-  </model-viewer>
 
-</div>
+    reveal="auto"
 
+    style="width: 100%; height: 400px;"
+>
+</model-viewer>
+ 
+  <button class="ar-button" onclick="triggerAR('model1')">
+
+    Play AR
+</button>
+</section>
+ 
 <footer>
-  <div><strong>Facebook:</strong> 
-    <a href="https://www.facebook.com/mushroomsstudio" target="_blank">
+<div class="footer-link">
+<strong>Facebook:</strong>
+<a href="https://www.facebook.com/mushroomsstudio" target="_blank" rel="noopener">
+
       facebook.com/mushroomsstudio
-    </a>
-  </div>
-  <div><strong>Website:</strong> 
-    <a href="https://www.mushroom-studio.com" target="_blank">
+</a>
+</div>
+ 
+  <div class="footer-link">
+<strong>Website:</strong>
+<a href="https://www.mushroom-studio.com" target="_blank" rel="noopener">
+
       mushroom-studio.com
-    </a>
-  </div>
+</a>
+</div>
 </footer>
-
-<!-- Model Viewer Script -->
+ 
+<!-- Load model-viewer -->
 <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
-<script nomodule src="https://unpkg.com/@google/model-viewer/dist/model-viewer-legacy.js"></script>
+ 
+<!-- AR Button Script -->
+<script>
 
+  function triggerAR(id) {
+
+    const viewer = document.getElementById(id);
+ 
+    if (!viewer) {
+
+      console.warn("Model viewer not found");
+
+      return;
+
+    }
+ 
+    if (viewer.activateAR) {
+
+      viewer.activateAR().catch((error) => {
+
+        alert("AR ไม่รองรับบนอุปกรณ์นี้ หรือถูกบล็อกโดยเบราว์เซอร์\nกรุณากดปุ่ม AR บนตัวโมเดลแทน");
+
+        console.warn("activateAR failed:", error);
+
+      });
+
+    } else {
+
+      alert("เบราว์เซอร์นี้ไม่รองรับ AR");
+
+    }
+
+  }
+</script>
+ 
 </body>
 </html>
+ 
